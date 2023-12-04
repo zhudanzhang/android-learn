@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--    使用android:layout_width和android:layout_height指定了控件的宽度和高度 -->
+    <!--    Android中所有的控件都具有这两个属性，可选值有3种：match_parent、fill_parent和wrap_content-->
+    <!-- match_parent和fill_parent的意义相同，现在官方更加推荐使用match_parent。match_parent表示让当前控件的大小和父布局的大小一样，也就是由父布局来决定当前控件的大小 -->
+    <!--    wrap_content表示让当前控件的大小能够刚好包含住里面的内容，也就是由控件内容决定当前控件的大小-->
+
+<!--    Android控件的可见属性-->
+<!--    所有的Android控件都具有这个属性，可以通过android:visibility进行指定，可选值有3种：visible、invisible和gone。
+    visible表示控件是可见的，这个值是默认值，不指定android:visibility时，控件都是可见的。
+    invisible表示控件不可见，但是它仍然占据着原来的位置和大小，可以理解成控件变成透明状态了。
+    gone则表示控件不仅不可见，而且不再占用任何屏幕空间-->
+
+
+    <!--   ==========TextView=============  -->
+<!--    使用android:gravity来指定文字的对齐方式，可选值有top、bottom、left、right、center等，可以用“|”来同时指定多个值-->
+<!--  指定的center，效果等同于center_vertical|center_horizontal，表示文字在垂直和水平方向都居中对齐  -->
+<!--    通过android:textSize属性可以指定文字的大小，通过android:textColor属性可以指定文字的颜色 -->
+<!--    在Android中字体大小使用sp作为单位-->
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:textColor="#00ff00"
+        android:text="This is TextView" />
+
+
+
+    <!--   ==========Button=============  -->
+<!--    由于系统会对Button中的所有英文字母自动进行大写转换 textAllCaps 关闭 -->
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:textAllCaps="false" />
+
+
+<!--  EditText  -->
+<!--    使用android:hint属性指定了一段提示性的文本-->
+<!--    使用android:maxLines属性最高高度 -->
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type something here"
+        android:maxLines="2"
+        />
+
+<!--    ImageView -->
+<!--    使用android:src属性给ImageView指定了一张图片-->
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img1"
+        />
+
+<!--  ProgressBar  -->
+<!--  ProgressBar用于在界面上显示一个进度条，表示我们的程序正在加载一些数据  -->
+<!--    指定不同的样式，刚刚是圆形进度条，通过style属性可以将它指定成水平进度条-->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100"
+        />
+
+
+<!--    4种基本布局 -->
+</LinearLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.helloworld">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.HelloWorld">
+        <!-- android:launchMode 启动模式 -->
+        <!-- 根据特定的需求为每个活动指定恰当的启动模式。启动模式一共有4种，分别是standard、singleTop、singleTask和singleInstance，可以在AndroidManifest.xml中通过给<activity>标签指定android:launchMode属性来选择启动模式 -->
+        <!-- 在standard模式（即默认情况）下，每当启动一个新的活动，它就会在返回栈中入栈，并处于栈顶的位置。对于使用standard模式的活动，系统不会在乎这个活动是否已经在返回栈中存在，每次启动都会创建该活动的一个新的实例 -->
+        <!-- 当活动的启动模式指定为singleTop，在启动活动时如果发现返回栈的栈顶已经是该活动，则认为可以直接使用它，不会再创建新的活动实例 -->
+        <!-- 当活动的启动模式指定为singleTask，每次启动该活动时系统首先会在返回栈中检查是否存在该活动的实例，如果发现已经存在则直接使用该实例，并把在这个活动之上的所有活动统统出栈，如果没有发现就会创建一个新的活动实例 -->
+        <!-- 指定为singleInstance模式的活动会启用一个新的返回栈来管理这个活动（其实如果singleTask模式指定了不同的taskAffinity，也会启动一个新的返回栈） -->
+        <!-- 使用了一个android:theme属性  用于给当前活动指定主题的，Android系统内置有很多主题可以选择，当然我们也可以定制自己的主题，而这里@style/Theme.AppCompat.Dialog则毫无疑问是让DialogActivity使用对话框式的主题 -->
+        <activity
+            android:name=".DialogActivity"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity android:name=".SecondActivity">
+
+            <!-- 通过在<activity>标签下配置<intent-filter>的内容，可以指定当前活动能够响应的action和category -->
+            <!-- 在<action>标签中我们指明了当前活动可以响应com.example.helloworld.ACTION_START这个action，而<category>标签则包含了一些附加信息，更精确地指明了当前的活动能够响应的Intent中还可能带有的category。 -->
+            <intent-filter>
+                <action android:name="com.example.helloworld.ACTION_START" />
+                <!-- android.intent.category.DEFAULT  用于指示一个 Activity 是默认的处理方式，如果没有其他匹配的类别，系统将使用默认的组件来处理 -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.example.helloworld.MY_CATEGORY" />
+            </intent-filter>
+        </activity> <!-- .MainActivity com.example.helloworld.MainActivity 的缩写 -->
+        <activity android:name=".MainActivity">
+
+            <!-- 配置主活动，，当程序运行起来的时候，要首先启动哪个活动 -->
+            <!-- <intent-filter> -->
+
+
+            <!-- &lt;!&ndash; 下面两行表示 MainActivity 是这个项目的主活动 &ndash;&gt; -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".MainActivity3">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

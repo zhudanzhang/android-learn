@@ -1,0 +1,34 @@
+// Android Studio是采用Gradle来构建项目，使用了一种基于Groovy的领域特定语言（DSL）来声明项目设置，摒弃了传统基于XML（如Ant和Maven）的各种烦琐配置
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+// buildscript 用于配置构建脚本的依赖项和仓库
+buildscript {
+    // repositories 指定了构建脚本可以从哪些仓库中获取依赖项
+    repositories {
+        google() // google() 存储库用于访问谷歌的Maven存储库
+        jcenter() // jcenter() 存储库是指JCenter，它曾是一个流行的Bintray存储库，用于托管Java和Android库，JCenter于2021年2月1日停止新的包和版本上传，因此不再是一个建议的存储库
+    }
+    // dependencies 定义了构建脚本本身的依赖项
+    dependencies {
+        // 使用classpath声明了一个Gradle插件
+        // 因为Gradle并不是专门为构建Android项目而开发的，Java、C++等很多种项目都可以使用Gradle来构建。因此如果我们要想使用它来构建Android项目，则需要声明com.android.tools.build:gradle这个插件并指定版本
+        classpath "com.android.tools.build:gradle:4.1.2"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+// 配置了项目中所有模块的仓库信息
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+// 用于清理项目的任务
+// 当运行 gradlew.bat clean 将删除项目的build目录
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
